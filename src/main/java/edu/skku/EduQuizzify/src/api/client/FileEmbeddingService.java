@@ -12,14 +12,14 @@ import org.springframework.web.client.RestTemplate;
 import edu.skku.EduQuizzify.src.api.dto.EmbeddingRequestDto;
 
 @Service
-public class FileProcessingService {
+public class FileEmbeddingService {
 
 	@Value("${fastapi.url}")
 	private String fastapiUrl; // 환경 변수에서 FastAPI URL을 주입받음
 
 	private final RestTemplate restTemplate;
 
-	public FileProcessingService(RestTemplateBuilder builder) {
+	public FileEmbeddingService(RestTemplateBuilder builder) {
 		this.restTemplate = builder.build();
 	}
 
@@ -35,7 +35,7 @@ public class FileProcessingService {
 		HttpEntity<EmbeddingRequestDto> requestEntity = new HttpEntity<>(requestDto, headers);
 
 		// FastAPI에 POST 요청을 보냄
-		String apiUrl = fastapiUrl + "/create_embedding";
+		String apiUrl = fastapiUrl + "/files/embeddings";
 
 		try {
 			ResponseEntity<String> response = restTemplate.exchange(apiUrl, HttpMethod.POST, requestEntity,
