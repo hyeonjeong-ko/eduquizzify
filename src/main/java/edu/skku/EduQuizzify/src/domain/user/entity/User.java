@@ -1,4 +1,4 @@
-package edu.skku.EduQuizzify.src.entity;
+package edu.skku.EduQuizzify.src.domain.user.entity;
 
 import java.time.LocalDateTime;
 
